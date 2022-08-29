@@ -19,6 +19,7 @@ export default function (Alpine) {
         function escapeDialog(event) {
             if (event.key !== "Escape") return;
             evaluate();
+            event.preventDefault(); // prevent native escape
         }
 
         function backdropDialog(event) {
@@ -33,22 +34,24 @@ export default function (Alpine) {
         }
 
         el._x_doShow = () => {
+            if (el.hasAttribute("open")) return;
             el.showModal();
-            el.addEventListener("keydown", escapeDialog);
             el.addEventListener("click", backdropDialog);
+            document.addEventListener("keydown", escapeDialog);
             scrollLock(lockPageScroll);
         };
 
         el._x_doHide = () => {
+            if (!el.hasAttribute("open")) return;
             el.close();
-            el.removeEventListener("keydown", escapeDialog);
             el.removeEventListener("click", backdropDialog);
+            document.removeEventListener("keydown", escapeDialog);
             scrollLock(false);
         };
 
         cleanup(() => {
-            el.removeEventListener("keydown", escapeDialog);
             el.removeEventListener("click", backdropDialog);
+            document.removeEventListener("keydown", escapeDialog);
             scrollLock(false);
         });
     }
