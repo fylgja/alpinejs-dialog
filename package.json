@@ -5,14 +5,14 @@
   "homepage": "https://fylgja.dev/",
   "author": "Fylgja",
   "license": "MIT",
-  "main": "index.js",
-  "unpkg": "index.js",
-  "module": "index.esm.js",
+  "main": "dist/index.js",
+  "unpkg": "dist/index.min.js",
+  "module": "dist/index.mjs",
   "exports": {
     ".": {
-      "import": "./index.esm.js",
-      "require": "./index.cjs.js",
-      "default": "./index.cjs.js"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.cjs"
     }
   },
   "repository": {
