@@ -1,12 +1,6 @@
 export default function (Alpine) {
     Alpine.directive("dialog", fylgjaAlpineDialog);
 
-    /**
-     *
-     * @param {HTMLDialogElement} el
-     * @param {{ expression: boolean; modifiers: string[]; }} values
-     * @param {{ evaluateLater: () =>; cleanup: () => void; }} functions
-     */
     function fylgjaAlpineDialog(
         el,
         { expression, modifiers },
@@ -18,30 +12,15 @@ export default function (Alpine) {
         el.style.display = null;
         el.hidden = false;
 
-        /**
-         * Handles scroll locking on the body
-         *
-         * @param {boolean} use
-         */
         function scrollLock(use = true) {
             document.body.style.overflow = use ? "hidden" : "";
         }
 
-        /**
-         * Use Alpine to handle escape key instead of native event
-         *
-         * @param {KeyboardEvent} event
-         */
         function escapeDialog(event) {
             if (event.key !== "Escape") return;
             evaluate();
         }
 
-        /**
-         * Handle case when backdrop is clicked
-         *
-         * @param {MouseEvent} event
-         */
         function backdropDialog(event) {
             const rect = el.getBoundingClientRect();
             const isInDialog =
