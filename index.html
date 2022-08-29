@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@fylgja alpinejs dialog test</title>
+    <link href="./node_modules/fylgja//fylgja.css" rel="stylesheet">
+    <script src="./index.js" defer></script>
+    <script src="./node_modules/alpinejs/dist/cdn.min.js" defer></script>
+</head>
+<body>
+    <main x-data="{ open: false }" class="min-h-screen flex justify-center items-center">
+        <button class="btn -theme" @click="open = !open">Open Alpine Dialog</button>
+        <dialog x-show="open" x-dialog="open = false">
+            <div class="dialog-header flex justify-between items-center border-block-end pb-4 mb-4">
+                <span class="h3 my-0">Fylgja Dialog</span>
+                <button class="btn -icon" @click="open = false">X</button>
+            </div>
+            <div class="dialog-inner">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p>
+                    Magnam, debitis dolor unde ab veritatis repellat hic!<br>
+                    Cum hic corporis earum nemo facilis obcaecati soluta sapiente quia iure.<br>
+                    Sequi, molestiae eos!
+                </p>
+            </div>
+        </dialog>
+    </main>
+    <footer>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, debitis dolor unde ab veritatis repellat
+            hic! Cum hic corporis earum nemo facilis obcaecati soluta sapiente quia iure. Sequi, molestiae eos!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, debitis dolor unde ab veritatis repellat
+            hic! Cum hic corporis earum nemo facilis obcaecati soluta sapiente quia iure. Sequi, molestiae eos!</p>
+    </footer>
+</body>
+</html>
