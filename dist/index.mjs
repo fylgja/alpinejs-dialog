@@ -8,6 +8,7 @@ function dialog_default(Alpine) {
     const hasEscapeClose = !modifiers.includes("noescape");
     el.style.display = null;
     el.hidden = false;
+    el.style.length === 0 && el.removeAttribute("style");
     function scrollLock(use = true) {
       document.body.style.overflow = use ? "hidden" : "";
     }
