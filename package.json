@@ -1,19 +1,34 @@
 {
-  "name": "@fylgja/alpine-dialog",
-  "version": "1.0.0",
+  "name": "@fylgja/alpinejs-dialog",
+  "version": "0.1.0",
   "description": "",
+  "homepage": "https://fylgja.dev/",
+  "author": "Fylgja",
+  "license": "MIT",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node ./scripts/build.js"
+  "unpkg": "index.js",
+  "module": "index.esm.js",
+  "exports": {
+    ".": {
+      "import": "./index.esm.js",
+      "require": "./index.cjs.js",
+      "default": "./index.cjs.js"
+    }
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fylgja/alpinejs-dialog"
+  },
+  "bugs": "https://github.com/fylgja/alpinejs-dialog/issues",
   "keywords": [
     "alpinejs",
     "fylgja",
     "dialog"
   ],
-  "author": "Fylgja",
-  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node ./scripts/build.js"
+  },
   "devDependencies": {
     "alpinejs": "^3.10.3",
     "esbuild": "^0.15.5",
