@@ -6,10 +6,10 @@ export default function (Alpine) {
         { expression, modifiers },
         { evaluateLater, cleanup }
     ) {
-        const evaluate = evaluateLater(expression);
+        const evaluate = expression.length
+            ? evaluateLater(expression)
+            : () => {};
         const lockPageScroll = modifiers.includes("noscroll");
-        const hasBackdropClose = !modifiers.includes("noclickaway");
-        const hasEscapeClose = !modifiers.includes("noescape");
 
         // Remove any logic set by `x-show`
         el.style.display = null;
@@ -23,7 +23,7 @@ export default function (Alpine) {
         function escapeDialog(event) {
             if (event.key !== "Escape") return;
             event.preventDefault(); // prevent native escape
-            hasEscapeClose && evaluate();
+            evaluate();
         }
 
         function backdropDialog(event) {
@@ -41,7 +41,7 @@ export default function (Alpine) {
             if (el.hasAttribute("open")) return;
             el.showModal();
             document.addEventListener("keydown", escapeDialog);
-            hasBackdropClose && el.addEventListener("click", backdropDialog);
+            el.addEventListener("click", backdropDialog);
             scrollLock(lockPageScroll);
         };
 
@@ -49,13 +49,13 @@ export default function (Alpine) {
             if (!el.hasAttribute("open")) return;
             el.close();
             document.removeEventListener("keydown", escapeDialog);
-            hasBackdropClose && el.removeEventListener("click", backdropDialog);
+            el.removeEventListener("click", backdropDialog);
             scrollLock(false);
         };
 
         cleanup(() => {
             document.removeEventListener("keydown", escapeDialog);
-            hasBackdropClose && el.removeEventListener("click", backdropDialog);
+            el.removeEventListener("click", backdropDialog);
             scrollLock(false);
         });
     }
