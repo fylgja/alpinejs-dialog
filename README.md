@@ -3,7 +3,7 @@
 [![NPM version](https://img.shields.io/npm/v/@fylgja/alpinejs-dialog)](https://www.npmjs.org/package/@fylgja/alpinejs-dialog)
 ![license](https://img.shields.io/github/license/fylgja/alpinejs-fylgja)
 
-<!-- TODO -->
+Power up you AlpineJs by adding support for the HTML Dialog.
 
 ## Installation
 
