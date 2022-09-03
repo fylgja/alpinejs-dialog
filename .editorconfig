@@ -11,19 +11,16 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[*.{md,mdx}]
+[*.md]
 indent_size = 4
 trim_trailing_whitespace = false
 max_line_length = 80
 
-[*.{css,less,sass,scss,js,ts,mjs}]
+[*.{css,js,cjs,mjs}]
 indent_size = 4
 max_line_length = 80
 
-[*.{html,vue,jsx,tsx}]
+[*.html]
+indent_style = tab
 indent_size = 4
 max_line_length = 80
-
-[*.{xml,phtml,php}]
-indent_size = 4
-max_line_length = 120
