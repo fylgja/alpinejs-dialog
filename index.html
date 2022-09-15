@@ -11,10 +11,14 @@
 </head>
 <body>
 	<main class="min-h-screen flex flex-col justify-center">
-		<div class="py-8 mx-auto">
-			<img src="https://raw.githubusercontent.com/fylgja/fylgja/main/assets/logo.svg" alt="Fylgja Logo"
-				width="300" height="130">
-		</div>
+		<a href="https://fylgja.dev/" target="_blank" rel="noopener noreferrer" class="block py-8 mx-auto">
+			<img
+				src="https://raw.githubusercontent.com/fylgja/fylgja/main/assets/logo.svg"
+				alt="Fylgja CSS"
+				width="300"
+				height="130"
+			>
+		</a>
 		<div x-data="{ openModal: false, openOffcanvas: false }" class="mt-8">
 			<div class="flex flex-wrap justify-center"
 				style="font-size: clamp(1rem, 1.2vw, 1.25rem); --btn-border-width: 2px;">
@@ -36,6 +40,13 @@
 						Sequi, molestiae eos!
 					</p>
 				</div>
+				<p class="weight-bold">
+					Also
+					<a href="https://fylgja.dev/components/dialog/" target="_blank" rel="noopener noreferrer">
+						checkout the Fylgja Dialog,
+					</a>
+					that powers all the styling for the dialog
+				</p>
 			</dialog>
 
 			<dialog x-show="openOffcanvas" x-dialog.noscroll="openOffcanvas = false" class="offcanvas">
@@ -51,6 +62,13 @@
 						Sequi, molestiae eos!
 					</p>
 				</div>
+				<p class="weight-bold">
+					Also
+					<a href="https://fylgja.dev/components/dialog/" target="_blank" rel="noopener noreferrer">
+						checkout the Fylgja Dialog,
+					</a>
+					that powers all the styling for the dialog
+				</p>
 			</dialog>
 		</div>
 		<div class="container py-12" style="--container-size: 68ch">
