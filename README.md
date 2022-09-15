@@ -3,7 +3,7 @@
 [![NPM version](https://img.shields.io/npm/v/@fylgja/alpinejs-dialog)](https://www.npmjs.org/package/@fylgja/alpinejs-dialog)
 ![license](https://img.shields.io/github/license/fylgja/alpinejs-fylgja)
 
-Power up you AlpineJs by adding support for the HTML Dialog.
+Bring the power of AlpineJs to the HTML dialog.
 
 ## Installation
 
@@ -29,10 +29,10 @@ Alpine.start();
 
 ### Via CDN
 
-You can include the CDN version of this plugin as a <script> tag,
+You can include the CDN version of this plugin as a `<script>` tag,
 just make sure to include it before AlpineJs.
 
-```bash
+```html
 <script defer src="https://unpkg.com/@fylgja/alpinejs-dialog/dist/index.min.js"></script>
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 ```
@@ -69,3 +69,4 @@ To lock the page scroll add the modifier `noscroll`;
 ```
 
 This will now prevent any scrolling on the page.
+
