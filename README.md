@@ -5,6 +5,8 @@
 
 Bring the power of AlpineJs to the HTML dialog.
 
+See it in action here https://alpinejs-dialog.netlify.app/
+
 ## Installation
 
 You can use this plugin by either installing it using NPM or including it from a CDN.
@@ -69,4 +71,3 @@ To lock the page scroll add the modifier `noscroll`;
 ```
 
 This will now prevent any scrolling on the page.
-
