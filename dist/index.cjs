@@ -25,7 +25,7 @@ module.exports = __toCommonJS(module_exports);
 
 // src/dialog.js
 function dialog_default(Alpine) {
-  Alpine.directive("dialog", fylgjaAlpineDialog);
+  Alpine.directive("htmldialog", fylgjaAlpineDialog);
   function fylgjaAlpineDialog(el, { expression, modifiers }, { evaluateLater, cleanup }) {
     const evaluate = expression.length ? evaluateLater(expression) : () => {
     };

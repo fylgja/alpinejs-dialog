@@ -27,7 +27,7 @@
 					Offcanvas</button>
 			</div>
 
-			<dialog x-show="openModal" x-dialog.noscroll="openModal = false">
+			<dialog x-show="openModal" x-htmldialog.noscroll="openModal = false">
 				<div class="dialog-header flex justify-between items-center border-block-end pb-4 mb-4">
 					<span class="h3 my-0">Fylgja Dialog Modal</span>
 					<button class="btn -icon" @click="openModal = false">X</button>
@@ -49,7 +49,7 @@
 				</p>
 			</dialog>
 
-			<dialog x-show="openOffcanvas" x-dialog.noscroll="openOffcanvas = false" class="offcanvas">
+			<dialog x-show="openOffcanvas" x-htmldialog.noscroll="openOffcanvas = false" class="offcanvas">
 				<div class="dialog-header flex justify-between items-center border-block-end pb-4 mb-4">
 					<span class="h3 my-0">Fylgja Dialog Offcanvas</span>
 					<button class="btn -icon" @click="openOffcanvas = false">X</button>

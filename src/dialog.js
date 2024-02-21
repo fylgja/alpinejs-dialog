@@ -1,5 +1,5 @@
 export default function (Alpine) {
-    Alpine.directive("dialog", fylgjaAlpineDialog);
+    Alpine.directive("htmldialog", fylgjaAlpineDialog);
 
     function fylgjaAlpineDialog(
         el,
