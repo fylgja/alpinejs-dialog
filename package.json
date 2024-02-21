@@ -1,7 +1,7 @@
 {
   "name": "@fylgja/alpinejs-dialog",
   "version": "1.0.1",
-  "description": "",
+  "description": "Bring the power of AlpineJs to the HTML dialog",
   "homepage": "https://fylgja.dev/",
   "author": "Fylgja",
   "license": "MIT",
