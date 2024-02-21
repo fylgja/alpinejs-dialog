@@ -6,9 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.0.1] - 2024-02-21
+## [2.0.0] - 2024-02-21
 ### Changed
 - renamed name from `x-dialog` to `x-htmldialog` to not conflict with Alpine UI name
 
-## [1.0.1] - 2022-09-15
+## [1.0.0] - 2022-09-15
 Initial Release 🎉
