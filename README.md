@@ -46,15 +46,15 @@ To use this, create an Alpine component for example, like;
 ```html
 <div x-data="{ open: false }">
     <button @click="open = !open">Open</button>
-    <dialog x-show="open" x-dialog="open = false">..</dialog>
+    <dialog x-show="open" x-htmldialog="open = false">..</dialog>
 </div>
 ```
 
-When adding the `x-dialog` to an `x-show` element,
+When adding the `x-htmldialog` to an `x-show` element,
 it will not toggle the display,
 but instead use the native `el.showModal()` function.
 
-The value inside the `x-dialog` is not required,
+The value inside the `x-htmldialog` is not required,
 but is recommended to close the dialog using the escape key or clicking the backdrop.
 
 ### Modifiers
@@ -66,7 +66,7 @@ To lock the page scroll add the modifier `noscroll`;
 ```html
 <div x-data="{ open: false }">
     <button @click="open = !open">Open</button>
-    <dialog x-show="open" x-dialog.noscroll="open = false">..</dialog>
+    <dialog x-show="open" x-htmldialog.noscroll="open = false">..</dialog>
 </div>
 ```
 
