@@ -38,7 +38,11 @@ export default function (Alpine) {
         }
 
         function preventInvalidClose(event) {
+            console.log('test if form is invalid.');
             const form = el.querySelector('form');
+            if (form) {
+                console.log('found a form', form);
+            }
             if (form && !form.checkValidity()) {
                 event.preventDefault(); // Prevent dialog close if form is invalid
                 console.log('Form is invalid, preventing dialog close');
