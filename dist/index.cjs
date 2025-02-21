@@ -49,12 +49,24 @@ function dialog_default(Alpine) {
         return;
       evaluate();
     }
+    function preventInvalidClose(event) {
+      console.log("test if form is invalid.");
+      const form = el.querySelector("form");
+      if (form) {
+        console.log("found a form", form);
+      }
+      if (form && !form.checkValidity()) {
+        event.preventDefault();
+        console.log("Form is invalid, preventing dialog close");
+      }
+    }
     el._x_doShow = () => {
       if (el.hasAttribute("open"))
         return;
       el.showModal();
       document.addEventListener("keydown", escapeDialog);
       el.addEventListener("click", backdropDialog);
+      el.addEventListener("close", preventInvalidClose);
       scrollLock(lockPageScroll);
     };
     el._x_doHide = () => {
@@ -63,11 +75,13 @@ function dialog_default(Alpine) {
       el.close();
       document.removeEventListener("keydown", escapeDialog);
       el.removeEventListener("click", backdropDialog);
+      el.removeEventListener("close", preventInvalidClose);
       scrollLock(false);
     };
     cleanup(() => {
       document.removeEventListener("keydown", escapeDialog);
       el.removeEventListener("click", backdropDialog);
+      el.removeEventListener("close", preventInvalidClose);
       scrollLock(false);
     });
   }
