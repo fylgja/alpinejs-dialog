@@ -43,6 +43,7 @@
         document.addEventListener("keydown", escapeDialog);
         el.addEventListener("click", backdropDialog);
         el.addEventListener("close", preventInvalidClose);
+        console.log("added close event listener");
         scrollLock(lockPageScroll);
       };
       el._x_doHide = () => {
@@ -52,6 +53,7 @@
         document.removeEventListener("keydown", escapeDialog);
         el.removeEventListener("click", backdropDialog);
         el.removeEventListener("close", preventInvalidClose);
+        console.log("Removed close event listener");
         scrollLock(false);
       };
       cleanup(() => {

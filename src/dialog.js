@@ -55,6 +55,7 @@ export default function (Alpine) {
             document.addEventListener("keydown", escapeDialog);
             el.addEventListener("click", backdropDialog);
             el.addEventListener("close", preventInvalidClose);
+            console.log('added close event listener');
             scrollLock(lockPageScroll);
         };
 
@@ -64,6 +65,7 @@ export default function (Alpine) {
             document.removeEventListener("keydown", escapeDialog);
             el.removeEventListener("click", backdropDialog);
             el.removeEventListener("close", preventInvalidClose);
+            console.log("Removed close event listener");
             scrollLock(false);
         };
 
