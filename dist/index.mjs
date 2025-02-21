@@ -35,6 +35,15 @@ function dialog_default(Alpine) {
         console.log("Form is invalid, preventing dialog close");
       }
     }
+    function handleEnterKey(event) {
+      if (event.key === "Enter") {
+        const form = el.querySelector("form");
+        if (form && !form.checkValidity()) {
+          event.preventDefault();
+          console.log("Enter key pressed, form is invalid, preventing dialog close");
+        }
+      }
+    }
     el._x_doShow = () => {
       if (el.hasAttribute("open"))
         return;
@@ -42,6 +51,7 @@ function dialog_default(Alpine) {
       document.addEventListener("keydown", escapeDialog);
       el.addEventListener("click", backdropDialog);
       el.addEventListener("close", preventInvalidClose);
+      el.addEventListener("keydown", handleEnterKey);
       console.log("added close event listener");
       scrollLock(lockPageScroll);
     };
@@ -52,6 +62,7 @@ function dialog_default(Alpine) {
       document.removeEventListener("keydown", escapeDialog);
       el.removeEventListener("click", backdropDialog);
       el.removeEventListener("close", preventInvalidClose);
+      el.removeEventListener("keydown", handleEnterKey);
       console.log("Removed close event listener");
       scrollLock(false);
     };
