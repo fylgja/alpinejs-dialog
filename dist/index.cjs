@@ -61,11 +61,15 @@ function dialog_default(Alpine) {
       }
     }
     function handleEnterKey(event) {
+      console.log("key pressed");
       if (event.key === "Enter") {
+        console.log("key pressed - key was enter");
         const form = el.querySelector("form");
         if (form && !form.checkValidity()) {
           event.preventDefault();
           console.log("Enter key pressed, form is invalid, preventing dialog close");
+        } else {
+          console.log("key pressed - key was enter - form exists and looks good");
         }
       }
     }
@@ -95,6 +99,8 @@ function dialog_default(Alpine) {
       document.removeEventListener("keydown", escapeDialog);
       el.removeEventListener("click", backdropDialog);
       el.removeEventListener("close", preventInvalidClose);
+      el.removeEventListener("keydown", handleEnterKey);
+      console.log("Removed close event listener");
       scrollLock(false);
     });
   }
