@@ -15,6 +15,7 @@ export default function (Alpine) {
         el.style.display = null;
         el.hidden = false;
         el.style.length === 0 && el.removeAttribute("style");
+        el.addEventListener("mousedown", backdropDialog);
 
         function scrollLock(use = true) {
             document.body.style.overflow = use ? "hidden" : "";
@@ -41,7 +42,6 @@ export default function (Alpine) {
             if (el.hasAttribute("open")) return;
             el.showModal();
             document.addEventListener("keydown", escapeDialog);
-            el.addEventListener("click", backdropDialog);
             scrollLock(lockPageScroll);
         };
 
@@ -49,13 +49,12 @@ export default function (Alpine) {
             if (!el.hasAttribute("open")) return;
             el.close();
             document.removeEventListener("keydown", escapeDialog);
-            el.removeEventListener("click", backdropDialog);
             scrollLock(false);
         };
 
         cleanup(() => {
             document.removeEventListener("keydown", escapeDialog);
-            el.removeEventListener("click", backdropDialog);
+            el.removeEventListener("mousedown", backdropDialog);
             scrollLock(false);
         });
     }
