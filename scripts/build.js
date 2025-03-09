@@ -5,7 +5,6 @@ esBuild.build({
     outfile: "./dist/index.js",
     bundle: true,
     platform: "browser",
-    define: { CDN: true },
 });
 
 esBuild.build({
@@ -14,7 +13,6 @@ esBuild.build({
     bundle: true,
     minify: true,
     platform: "browser",
-    define: { CDN: true },
 });
 
 esBuild.build({

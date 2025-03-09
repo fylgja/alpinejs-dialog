@@ -13,29 +13,25 @@
         document.body.style.overflow = use ? "hidden" : "";
       }
       function escapeDialog(event) {
-        if (event.key !== "Escape")
-          return;
+        if (event.key !== "Escape") return;
         event.preventDefault();
         evaluate();
       }
       function backdropDialog(event) {
         const rect = el.getBoundingClientRect();
         const isInDialog = rect.top <= event.clientY && event.clientY <= rect.top + rect.height && rect.left <= event.clientX && event.clientX <= rect.left + rect.width;
-        if (isInDialog)
-          return;
+        if (isInDialog) return;
         evaluate();
       }
       el._x_doShow = () => {
-        if (el.hasAttribute("open"))
-          return;
+        if (el.hasAttribute("open")) return;
         el.showModal();
         document.addEventListener("keydown", escapeDialog);
         el.addEventListener("click", backdropDialog);
         scrollLock(lockPageScroll);
       };
       el._x_doHide = () => {
-        if (!el.hasAttribute("open"))
-          return;
+        if (!el.hasAttribute("open")) return;
         el.close();
         document.removeEventListener("keydown", escapeDialog);
         el.removeEventListener("click", backdropDialog);
