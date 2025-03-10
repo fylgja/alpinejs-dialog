@@ -18,9 +18,22 @@ export default function (Alpine) {
 
         el.addEventListener("keydown", escapeDialog);
         el.addEventListener("mousedown", backdropDialog);
+        el.addEventListener("submit", methodDialog);
 
         function scrollLock(use = true) {
             document.body.style.overflow = use ? "hidden" : "";
+        }
+
+        // Also update the AlpineJs logic when the native close is triggered
+        // by the method=dialog or formmethod=dialog
+        function methodDialog(event) {
+            if (
+                event.target.getAttribute("method") === "dialog" ||
+                (event.submitter &&
+                    event.submitter.getAttribute("formmethod") === "dialog")
+            ) {
+                evaluate();
+            }
         }
 
         // Prevent native escape for AlpineJs logic
@@ -57,6 +70,7 @@ export default function (Alpine) {
         cleanup(() => {
             el.removeEventListener("keydown", escapeDialog);
             el.removeEventListener("mousedown", backdropDialog);
+            el.removeEventListener("submit", methodDialog);
             scrollLock(false);
         });
     }
