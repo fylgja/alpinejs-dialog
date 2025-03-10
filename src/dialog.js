@@ -15,18 +15,22 @@ export default function (Alpine) {
         el.style.display = null;
         el.hidden = false;
         el.style.length === 0 && el.removeAttribute("style");
+
+        el.addEventListener("keydown", escapeDialog);
         el.addEventListener("mousedown", backdropDialog);
 
         function scrollLock(use = true) {
             document.body.style.overflow = use ? "hidden" : "";
         }
 
+        // Prevent native escape for AlpineJs logic
         function escapeDialog(event) {
             if (event.key !== "Escape") return;
-            event.preventDefault(); // prevent native escape
+            event.preventDefault();
             evaluate();
         }
 
+        // Mimics the new closeby=any attribute
         function backdropDialog(event) {
             const rect = el.getBoundingClientRect();
             const isInDialog =
@@ -41,19 +45,17 @@ export default function (Alpine) {
         el._x_doShow = () => {
             if (el.hasAttribute("open")) return;
             el.showModal();
-            document.addEventListener("keydown", escapeDialog);
             scrollLock(lockPageScroll);
         };
 
         el._x_doHide = () => {
             if (!el.hasAttribute("open")) return;
             el.close();
-            document.removeEventListener("keydown", escapeDialog);
             scrollLock(false);
         };
 
         cleanup(() => {
-            document.removeEventListener("keydown", escapeDialog);
+            el.removeEventListener("keydown", escapeDialog);
             el.removeEventListener("mousedown", backdropDialog);
             scrollLock(false);
         });
