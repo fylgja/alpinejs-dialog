@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.2] - 2025-03-10
+### Added
+- Support for form method dialog
+
+### Fixed
+- Incorrect handeling of the backdrop click event, causing errors with the enter key inside a form
+
 ## [2.0.0] - 2024-02-21
 ### Changed
 - renamed name from `x-dialog` to `x-htmldialog` to not conflict with Alpine UI name

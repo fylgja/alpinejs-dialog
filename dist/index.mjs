@@ -8,8 +8,16 @@ function dialog_default(Alpine) {
     el.style.display = null;
     el.hidden = false;
     el.style.length === 0 && el.removeAttribute("style");
+    el.addEventListener("keydown", escapeDialog);
+    el.addEventListener("mousedown", backdropDialog);
+    el.addEventListener("submit", methodDialog);
     function scrollLock(use = true) {
       document.body.style.overflow = use ? "hidden" : "";
+    }
+    function methodDialog(event) {
+      if (event.target.getAttribute("method") === "dialog" || event.submitter && event.submitter.getAttribute("formmethod") === "dialog") {
+        evaluate();
+      }
     }
     function escapeDialog(event) {
       if (event.key !== "Escape") return;
@@ -25,20 +33,17 @@ function dialog_default(Alpine) {
     el._x_doShow = () => {
       if (el.hasAttribute("open")) return;
       el.showModal();
-      document.addEventListener("keydown", escapeDialog);
-      el.addEventListener("click", backdropDialog);
       scrollLock(lockPageScroll);
     };
     el._x_doHide = () => {
       if (!el.hasAttribute("open")) return;
       el.close();
-      document.removeEventListener("keydown", escapeDialog);
-      el.removeEventListener("click", backdropDialog);
       scrollLock(false);
     };
     cleanup(() => {
-      document.removeEventListener("keydown", escapeDialog);
-      el.removeEventListener("click", backdropDialog);
+      el.removeEventListener("keydown", escapeDialog);
+      el.removeEventListener("mousedown", backdropDialog);
+      el.removeEventListener("submit", methodDialog);
       scrollLock(false);
     });
   }
