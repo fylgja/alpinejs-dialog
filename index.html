@@ -1,80 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Test - @fylgja/alpinejs-dialog</title>
-	<link href="https://unpkg.com/fylgja/fylgja.css" rel="stylesheet">
-	<script defer src="https://unpkg.com/@fylgja/alpinejs-dialog/dist/index.min.js"></script>
-	<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-</head>
-<body>
-	<main class="min-h-screen flex flex-col justify-center">
-		<a href="https://fylgja.dev/" target="_blank" rel="noopener noreferrer" class="block py-8 mx-auto">
-			<img
-				src="https://raw.githubusercontent.com/fylgja/.github/main/assets/logo.svg"
-				alt="Fylgja CSS"
-				width="300"
-				height="130"
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Test - @fylgja/alpinejs-dialog</title>
+		<link href="https://unpkg.com/fylgja/fylgja.css" rel="stylesheet" />
+		<!-- <script defer src="https://unpkg.com/@fylgja/alpinejs-dialog/dist/index.min.js"></script> -->
+		<!-- <script defer src="./dist/index.min.js"></script> -->
+		<script defer type="module" src="./src/cdn.js"></script>
+		<script
+			defer
+			src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+		></script>
+	</head>
+	<body>
+		<main class="min-h-screen flex flex-col justify-center">
+			<a
+				href="https://fylgja.dev/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="block py-8 mx-auto"
 			>
-		</a>
-		<div x-data="{ openModal: false, openOffcanvas: false }" class="mt-8">
-			<div class="flex flex-wrap justify-center"
-				style="font-size: clamp(1rem, 1.2vw, 1.25rem); --btn-border-width: 2px;">
-				<button class="btn -theme m-1" @click="openModal = !openModal">Open Alpine Dialog Modal</button>
-				<button class="btn -outline m-1" @click="openOffcanvas = !openOffcanvas">Open Alpine Dialog
-					Offcanvas</button>
+				<img
+					src="https://raw.githubusercontent.com/fylgja/.github/main/assets/logo.svg"
+					alt="Fylgja CSS"
+					width="300"
+					height="130"
+				/>
+			</a>
+			<div
+				x-data="{ openModal: false, openOffcanvas: false }"
+				x-init="$watch('openModal', value => console.log('Modal open:', value))"
+				class="mt-8"
+			>
+				<div
+					class="flex flex-wrap justify-center"
+					style="
+						font-size: clamp(1rem, 1.2vw, 1.25rem);
+						--btn-border-width: 2px;
+					"
+				>
+					<button
+						class="btn -theme m-1"
+						@click="openModal = !openModal"
+					>
+						Open Alpine Dialog Modal
+					</button>
+					<button
+						class="btn -outline m-1"
+						@click="openOffcanvas = !openOffcanvas"
+					>
+						Open Alpine Dialog Offcanvas
+					</button>
+				</div>
+
+				<dialog
+					x-show="openModal"
+					x-htmldialog.noscroll="openModal = false"
+				>
+					<div
+						class="dialog-header flex justify-between items-center border-block-end pb-4 mb-4"
+					>
+						<span class="h3 my-0">Fylgja Dialog Modal</span>
+						<button class="btn -icon" @click="openModal = false">
+							X
+						</button>
+					</div>
+					<form
+						action="#"
+						method="dialog"
+						class="dialog-inner flow mb-4"
+					>
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing
+							elit.
+						</p>
+						<label>
+							<span>Preview of a form field</span>
+							<input
+								type="text"
+								placeholder="Lorum Ipsum"
+								required
+							/>
+						</label>
+						<div class="flex mt-4">
+							<button type="reset" class="btn -outline me-2">
+								Reset
+							</button>
+							<button class="btn -theme" type="submit">
+								Submit
+							</button>
+						</div>
+					</form>
+					<p class="weight-bold">
+						Also
+						<a
+							href="https://fylgja.dev/components/dialog/"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							checkout the Fylgja Dialog,
+						</a>
+						that powers all the styling for the dialog
+					</p>
+				</dialog>
+
+				<dialog
+					x-show="openOffcanvas"
+					x-htmldialog.noscroll="openOffcanvas = false"
+					class="offcanvas"
+				>
+					<div
+						class="dialog-header flex justify-between items-center border-block-end pb-4 mb-4"
+					>
+						<span class="h3 my-0">Fylgja Dialog Offcanvas</span>
+						<button
+							class="btn -icon"
+							@click="openOffcanvas = false"
+						>
+							X
+						</button>
+					</div>
+					<div class="dialog-inner">
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing
+							elit.
+						</p>
+						<p>
+							Magnam, debitis dolor unde ab veritatis repellat
+							hic!<br />
+							Cum hic corporis earum nemo facilis obcaecati soluta
+							sapiente quia iure.<br />
+							Sequi, molestiae eos!
+						</p>
+					</div>
+					<p class="weight-bold">
+						Also
+						<a
+							href="https://fylgja.dev/components/dialog/"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							checkout the Fylgja Dialog,
+						</a>
+						that powers all the styling for the dialog
+					</p>
+				</dialog>
 			</div>
-
-			<dialog x-show="openModal" x-htmldialog.noscroll="openModal = false">
-				<div class="dialog-header flex justify-between items-center border-block-end pb-4 mb-4">
-					<span class="h3 my-0">Fylgja Dialog Modal</span>
-					<button class="btn -icon" @click="openModal = false">X</button>
-				</div>
-				<div class="dialog-inner">
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-					<p>
-						Magnam, debitis dolor unde ab veritatis repellat hic!<br>
-						Cum hic corporis earum nemo facilis obcaecati soluta sapiente quia iure.<br>
-						Sequi, molestiae eos!
-					</p>
-				</div>
-				<p class="weight-bold">
-					Also
-					<a href="https://fylgja.dev/components/dialog/" target="_blank" rel="noopener noreferrer">
-						checkout the Fylgja Dialog,
-					</a>
-					that powers all the styling for the dialog
-				</p>
-			</dialog>
-
-			<dialog x-show="openOffcanvas" x-htmldialog.noscroll="openOffcanvas = false" class="offcanvas">
-				<div class="dialog-header flex justify-between items-center border-block-end pb-4 mb-4">
-					<span class="h3 my-0">Fylgja Dialog Offcanvas</span>
-					<button class="btn -icon" @click="openOffcanvas = false">X</button>
-				</div>
-				<div class="dialog-inner">
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-					<p>
-						Magnam, debitis dolor unde ab veritatis repellat hic!<br>
-						Cum hic corporis earum nemo facilis obcaecati soluta sapiente quia iure.<br>
-						Sequi, molestiae eos!
-					</p>
-				</div>
-				<p class="weight-bold">
-					Also
-					<a href="https://fylgja.dev/components/dialog/" target="_blank" rel="noopener noreferrer">
-						checkout the Fylgja Dialog,
-					</a>
-					that powers all the styling for the dialog
-				</p>
-			</dialog>
-		</div>
-		<div class="container py-12" style="--container-size: 68ch">
-			<div class="relative border-3" style="border-radius: 0.5em">
-				<div class="absolute inset-0 transform" style="--tx: 1em; --ty: 1em; border: inherit; border-radius: inherit"></div>
-				<pre class="relative my-0" style="--code-stroke: transparent; --code-bg: #fff; --code-font-size: 1rem;">
+			<div class="container py-12" style="--container-size: 68ch">
+				<div class="relative border-3" style="border-radius: 0.5em">
+					<div
+						class="absolute inset-0 transform"
+						style="
+							--tx: 1em;
+							--ty: 1em;
+							border: inherit;
+							border-radius: inherit;
+						"
+					></div>
+					<pre
+						class="relative my-0"
+						style="
+							--code-stroke: transparent;
+							--code-bg: #fff;
+							--code-font-size: 1rem;
+						"
+					>
 <code>&lt;script src="//unpkg.com/@fylgja/alpinejs-dialog" defer&gt;&lt;/script&gt;</code>
 <code>&lt;script src="//unpkg.com/alpinejs" defer&gt;&lt;/script&gt;</code>
 <code>&nbsp;</code>
@@ -85,8 +177,8 @@
 <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Content...</code>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/dialog&gt;</code>
 <code>&lt;/div&gt;</code></pre>
+				</div>
 			</div>
-		</div>
-	</main>
-</body>
+		</main>
+	</body>
 </html>
