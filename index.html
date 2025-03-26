@@ -170,13 +170,13 @@ body > main {
 					class="divide-y divide-gap-y"
 				>
 					<div class="dialog-header flex gap align">
-						<span class="font-size: var(--font-size-fluid-2)">Fylgja Dialog Modal</span>
-						<button style="--btn-py: 2px; --btn-px: 2px" @click="openModal = false">X</button>
+						<span style="font-size: var(--font-size-fluid-2)">Fylgja Dialog Modal</span>
+						<button @click="openModal = false">X</button>
 					</div>
 					<form
 						action="#"
 						method="dialog"
-						class="dialog-inner flow"
+						class="flow"
 					>
 						<p>
 							Lorem ipsum dolor sit amet consectetur adipisicing
@@ -199,59 +199,59 @@ body > main {
 							</button>
 						</div>
 					</form>
+					<hr>
 					<p>
 						Also
 						<a
-							href="https://fylgja.dev/components/dialog/"
+							href="https://fylgja.dev/library/base/"
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							checkout the Fylgja Dialog,
+							checkout the Fylgja Base,
 						</a>
-						that powers all the styling for the dialog
+						that powers all the styling for the dialog element
 					</p>
 				</dialog>
 
 				<dialog
 					x-show="openOffcanvas"
 					x-htmldialog.noscroll="openOffcanvas = false"
-					class="offcanvas divide-y divide-gap-y"
+					class="offcanvas"
 				>
-					<div class="dialog-header flex gap align">
+					<div class="flex gap align">
 						<span class="font-size: var(--font-size-fluid-2)">Fylgja Dialog Modal</span>
-						<button style="--btn-py: 2px; --btn-px: 2px" @click="openModal = false">X</button>
+						<button @click="openModal = false">X</button>
 					</div>
-					<div class="dialog-inner">
-						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit.
-						</p>
-						<p>
-							Magnam, debitis dolor unde ab veritatis repellat
-							hic!<br />
-							Cum hic corporis earum nemo facilis obcaecati soluta
-							sapiente quia iure.<br />
-							Sequi, molestiae eos!
-						</p>
-					</div>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing
+						elit.
+					</p>
+					<p>
+						Magnam, debitis dolor unde ab veritatis repellat
+						hic!<br />
+						Cum hic corporis earum nemo facilis obcaecati soluta
+						sapiente quia iure.<br />
+						Sequi, molestiae eos!
+					</p>
+					<hr>
 					<p>
 						Also
 						<a
-							href="https://fylgja.dev/components/dialog/"
+							href="https://fylgja.dev/library/base/"
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							checkout the Fylgja Dialog,
+							checkout the Fylgja Base,
 						</a>
-						that powers all the styling for the dialog
+						that powers all the styling for the dialog element
 					</p>
 				</dialog>
 			</div>
 			<div class="container" style="--py: var(--size-12); --container-size: 68ch">
-				<div class="relative rounded" style="border-width: 2px">
+				<div class="relative rounded flow-none" style="border-width: 2px">
 					<div
 						class="absolute rounded-inherit"
-						style="--inset: 1em 1em 0 0; border-width: inherit"
+						style="--inset: 0;border-width: inherit;--size: 100%;translate: -1em -1em;--z: -1;"
 					></div>
 					<pre
 						class="relative"
