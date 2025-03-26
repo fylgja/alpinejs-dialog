@@ -172,33 +172,20 @@ body > main {
 						<span style="font-size: var(--font-size-fluid-2)">Fylgja Dialog Modal</span>
 						<button @click="openModal = false">X</button>
 					</div>
-					<form
-						action="#"
-						method="dialog"
-						class="flow"
-					>
+					<form action="#" method="dialog">
 						<p>
 							Lorem ipsum dolor sit amet consectetur adipisicing
 							elit.
 						</p>
-						<label>
+						<label class="field">
 							<span>Preview of a form field</span>
-							<input
-								type="text"
-								placeholder="Lorum Ipsum"
-								required
-							/>
+							<input type="text" placeholder="Lorum Ipsum" required>
 						</label>
-						<div class="flex gap">
-							<button type="reset" class="btn">
-								Reset
-							</button>
-							<button class="btn --primary" type="submit">
-								Submit
-							</button>
+						<div class="field flex-wrap gap">
+							<button type="reset">Reset</button>
+							<button type="submit">Submit</button>
 						</div>
 					</form>
-					<hr>
 					<p>
 						Also
 						<a
