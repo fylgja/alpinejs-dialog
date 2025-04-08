@@ -1,7 +1,8 @@
 # Fylgja - AlpineJS Dialog
 
-[![NPM version](https://img.shields.io/npm/v/@fylgja/alpinejs-dialog?style=flat-square)](https://www.npmjs.org/package/@fylgja/alpinejs-dialog)
-![license](https://img.shields.io/github/license/fylgja/alpinejs-dialog?color=%23234&style=flat-square)
+[![NPM version](https://img.shields.io/npm/v/@fylgja/alpinejs-dialog?logo=npm)](https://www.npmjs.com/package/fylgja)
+[![License](https://img.shields.io/github/license/fylgja/alpinejs-dialog?color=%23234)](/LICENSE)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f6d1c1a3-2365-4d56-aeb4-ec52bcc7c1b6/deploy-status)](https://app.netlify.com/sites/alpinejs-dialog/deploys)
 
 Bring the power of AlpineJs to the HTML dialog.
 
