@@ -1,6 +1,6 @@
 # Fylgja - AlpineJS Dialog
 
-[![NPM version](https://img.shields.io/npm/v/@fylgja/alpinejs-dialog?logo=npm)](https://www.npmjs.com/package/fylgja)
+[![NPM version](https://img.shields.io/npm/v/@fylgja/alpinejs-dialog?logo=npm)](https://www.npmjs.com/package/@fylgja/alpinejs-dialog)
 [![License](https://img.shields.io/github/license/fylgja/alpinejs-dialog?color=%23234)](/LICENSE)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f6d1c1a3-2365-4d56-aeb4-ec52bcc7c1b6/deploy-status)](https://alpinejs-dialog.netlify.app/)
 
