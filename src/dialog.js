@@ -16,7 +16,7 @@ export default function (Alpine) {
         el.hidden = false;
         el.style.length === 0 && el.removeAttribute("style");
 
-        el.addEventListener("keydown", escapeDialog);
+        el.addEventListener("click", escapeDialog);
         el.addEventListener("mousedown", backdropDialog);
         el.addEventListener("submit", methodDialog);
 
@@ -45,6 +45,7 @@ export default function (Alpine) {
 
         // Mimics the new closeby=any attribute
         function backdropDialog(event) {
+            if (event.target !== el) return;
             const rect = el.getBoundingClientRect();
             const isInDialog =
                 rect.top <= event.clientY &&
@@ -68,7 +69,7 @@ export default function (Alpine) {
         };
 
         cleanup(() => {
-            el.removeEventListener("keydown", escapeDialog);
+            el.removeEventListener("click", escapeDialog);
             el.removeEventListener("mousedown", backdropDialog);
             el.removeEventListener("submit", methodDialog);
             scrollLock(false);
