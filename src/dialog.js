@@ -10,6 +10,7 @@ export default function (Alpine) {
             ? evaluateLater(expression)
             : () => {};
         const lockPageScroll = modifiers.includes("noscroll");
+        const closeby = modifierValue(modifiers, "closeby", "any");
 
         // Remove any logic set by `x-show`
         el.style.display = null;
@@ -40,12 +41,15 @@ export default function (Alpine) {
         function escapeDialog(event) {
             if (event.key !== "Escape") return;
             event.preventDefault();
+
+            if (closeby !== "any" && closeby !== "closerequest") return;
             evaluate();
         }
 
         // Mimics the new closeby=any attribute
         function backdropDialog(event) {
-            if (event.target !== el) return;
+            if (event.target !== el || closeby !== "any") return;
+
             const rect = el.getBoundingClientRect();
             const isInDialog =
                 rect.top <= event.clientY &&
@@ -53,6 +57,7 @@ export default function (Alpine) {
                 rect.left <= event.clientX &&
                 event.clientX <= rect.left + rect.width;
             if (isInDialog) return;
+
             evaluate();
         }
 
@@ -75,4 +80,25 @@ export default function (Alpine) {
             scrollLock(false);
         });
     }
+}
+
+function modifierValue(modifiers, key, fallback) {
+    if (modifiers.indexOf(key) === -1) return fallback;
+
+    const rawValue = modifiers[modifiers.indexOf(key) + 1];
+    if (!rawValue) return fallback;
+
+    if (key === "closeby") {
+        const allowedValues = ["auto", "none", "closerequest", "any"];
+        const options = allowedValues.join(", ");
+        if (!allowedValues.includes(rawValue)) {
+            console.warn(
+                `"${rawValue}" is not one of the allowed values for closeby: ${options}`
+            );
+        }
+
+        return fallback;
+    }
+
+    return rawValue;
 }

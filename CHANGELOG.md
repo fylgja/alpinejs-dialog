@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Implemented custom `closeby` Alpine modifier (native lacks sufficient browser support,
+  to be tested for side effects).
+  Backdrop closing is the current default (may be revisited; differs from standard dialog `closeby`).
+
 ### Fixed
 - Backdrop still being triggered
 
