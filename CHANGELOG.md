@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.0] - 2025-04-15
 ### Added
 - Implemented custom `closeby` Alpine modifier (native lacks sufficient browser support,
   to be tested for side effects).
