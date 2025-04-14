@@ -4,9 +4,9 @@
 [![License](https://img.shields.io/github/license/fylgja/alpinejs-dialog?color=%23234)](/LICENSE)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f6d1c1a3-2365-4d56-aeb4-ec52bcc7c1b6/deploy-status)](https://alpinejs-dialog.netlify.app/)
 
-Bring the power of AlpineJs to the HTML dialog.
+Bring the power and simplicity of Alpine.js to the native HTML `<dialog>` element.
 
-See it in action here https://alpinejs-dialog.netlify.app/
+**Live Demo:** https://alpinejs-dialog.netlify.app/
 
 ## Installation
 
@@ -40,9 +40,9 @@ just make sure to include it before AlpineJs.
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 ```
 
-## How to use
+## Usage
 
-To use this, create an Alpine component for example, like;
+To utilize the `x-htmldialog` plugin, add the directive to an HTML `<dialog>` element that is also controlled by `x-show`.
 
 ```html
 <div x-data="{ open: false }">
@@ -51,18 +51,20 @@ To use this, create an Alpine component for example, like;
 </div>
 ```
 
-When adding the `x-htmldialog` to an `x-show` element,
-it will not toggle the display,
-but instead use the native `el.showModal()` function.
+When the `x-htmldialog` directive is present on an `x-show` element:
 
-The value inside the `x-htmldialog` is not required,
-but is recommended to close the dialog using the escape key or clicking the backdrop.
+- It prevents `x-show` from directly toggling the display style.
+- Instead, it uses the native `el.showModal()` function to display the dialog.
+- The optional value provided to `x-htmldialog` (e.g., `"open = false"`) is executed
+  when the dialog is closed by pressing the Escape key or clicking outside the dialog (the backdrop).
 
 ### Modifiers
 
-#### Scroll-lock
+The `x-htmldialog` directive supports modifiers to further customize its behavior.
 
-To lock the page scroll add the modifier `noscroll`;
+#### `noscroll`
+
+The `noscroll` modifier prevents scrolling on the background page while the dialog is open.
 
 ```html
 <div x-data="{ open: false }">
@@ -71,4 +73,25 @@ To lock the page scroll add the modifier `noscroll`;
 </div>
 ```
 
-This will now prevent any scrolling on the page.
+#### `closeby`
+
+The `closeby` modifier allows you to control which events trigger the close action
+defined in the `x-htmldialog` value (backdrop click and/or Escape key press).
+
+This mimics the upcoming native `closeby` behavior of the `<dialog>` element.
+
+Available options for the `closeby` modifier:
+
+- `.auto` (Same as `.closerequest`). Only triggers the close action on the Escape key press.
+- `.none` Disables all automatic close triggers (backdrop click and Escape key).
+- `.closerequest` Only triggers the close action on the Escape key press.
+- `.any` (Default behavior if no `closeby` modifier is present).
+  Triggers the close action on both backdrop clicks and Escape key presses.
+
+Example, for disable all automatic closing:
+
+```html
+<dialog x-show="open" x-htmldialog.closeby.none="open = false">...</dialog>
+```
+
+This way you can keep the close trigger for form submissions and prevent any other close triggers.
