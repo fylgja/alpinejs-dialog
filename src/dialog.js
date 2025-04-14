@@ -16,8 +16,8 @@ export default function (Alpine) {
         el.hidden = false;
         el.style.length === 0 && el.removeAttribute("style");
 
-        el.addEventListener("click", escapeDialog);
-        el.addEventListener("mousedown", backdropDialog);
+        el.addEventListener("keydown", escapeDialog);
+        el.addEventListener("click", backdropDialog);
         el.addEventListener("submit", methodDialog);
 
         function scrollLock(use = true) {
@@ -69,8 +69,8 @@ export default function (Alpine) {
         };
 
         cleanup(() => {
-            el.removeEventListener("click", escapeDialog);
-            el.removeEventListener("mousedown", backdropDialog);
+            el.removeEventListener("keydown", escapeDialog);
+            el.removeEventListener("click", backdropDialog);
             el.removeEventListener("submit", methodDialog);
             scrollLock(false);
         });
