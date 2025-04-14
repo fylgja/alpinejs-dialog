@@ -5,120 +5,28 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Test - @fylgja/alpinejs-dialog</title>
-		<link href="https://cdn.jsdelivr.net/npm/@fylgja/base/index.min.css" rel="stylesheet">
-		<link href="https://cdn.jsdelivr.net/npm/@fylgja/tokens/css/index.min.css" rel="stylesheet">
-  		<link href="https://cdn.jsdelivr.net/npm/@fylgja/utilities/index.min.css" rel="stylesheet">
+		<link
+			href="https://cdn.jsdelivr.net/npm/@fylgja/base/index.min.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/@fylgja/tokens/css/index.min.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/@fylgja/utilities/index.min.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/@fylgja/base/theme.css"
+			rel="stylesheet"
+		/>
 		<style>
-			/**
- * Fylgja (https://fylgja.dev)
- * Licensed under MIT Open Source
- */
-@view-transition {
-  navigation: auto;
-}
-:root {
-  --brand: hsl(260, 84%, 56%);
-  --on-brand: hsl(260, 0%, 100%);
-  --form-active-color: var(--brand);
-  --form-error-color: #e00;
-  --control-checked-stroke: var(--brand);
-  --control-checked-bg: var(--brand);
-  --control-checked-color: var(--on-brand);
-  color-scheme: light dark;
-  scrollbar-color: var(--scrollthumb-color, var(--brand)) var(--scrolltrack-color, transparent);
-  accent-color: var(--brand);
-  caret-color: var(--brand);
-  interpolate-size: allow-keywords;
-}
-
-::marker {
-  color: var(--brand);
-  font-weight: bolder;
-}
-
-::selection {
-  text-shadow: none;
-  background: var(--brand);
-  color: var(--on-brand);
-}
-
-:focus-visible {
-  outline-color: var(--brand);
-}
-
-:where(:not(h1, h2, h3, h4, h5, h6, strong) > a) {
-  font-weight: 500;
-}
-
-blockquote,
-hr {
-  border-color: var(--brand);
-}
-
-:where(tbody tr:nth-child(even) :is(th, td)) {
-  background: var(--table-even-bg, var(--surface-color));
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-}
-body > main {
-  flex-grow: 1;
-}
-
-:where(body > :is(main, header, footer), article, section, aside) {
-  container-type: inline-size;
-}
-
-::-webkit-calendar-picker-indicator {
-  outline-color: var(--brand);
-}
-
-:where(select option:checked) {
-  background: var(--brand);
-  color: var(--on-brand);
-}
-
-:user-invalid:not(:focus) {
-  --form-stroke: var(--form-error-color);
-  outline: 1px solid var(--form-stroke);
-}
-
-:where(.field) {
-  display: block;
-  margin-block-start: 1em;
-}
-
-.btn-primary,
-.btn:where(.--primary),
-:where([type=submit], form button:not([type])),
-:where(input[type=file])::file-selector-button {
-  --btn-stroke: transparent;
-  --btn-bg: var(--brand);
-  --btn-color: var(--on-brand);
-  --btn-hover-bg: color-mix(in oklab, var(--brand) 80%, #000);
-  --btn-active-bg: color-mix(in oklab, var(--brand) 72%, #000);
-}
-
-:where([type=reset]) {
-  --btn-color: var(--form-error-color, currentcolor);
-}
-
-:where(.btn, button, [type=button], [type=submit], [type=reset]):has(:where(svg:only-child, img:only-child)) {
-  --btn-px: var(--btn-py, 0.375rem);
-}
-
-:where(dialog).offcanvas {
-  --ty: 0;
-  --tx: 100%;
-  --screen-y: 0;
-  --mx: auto 0;
-  block-size: 100%;
-  inline-size: min(100%, 25rem);
-  border-start-end-radius: 0;
-  border-end-end-radius: 0;
-}
+			@media (prefers-color-scheme: dark) {
+				dialog {
+					--dialog-bg: var(--surface-color);
+				}
+			}
 		</style>
 		<!-- <script defer src="https://unpkg.com/@fylgja/alpinejs-dialog/dist/index.min.js"></script> -->
 		<script defer src="./dist/index.min.js"></script>
@@ -169,7 +77,9 @@ body > main {
 					x-htmldialog.noscroll="openModal = false"
 				>
 					<div class="dialog-header flex gap align">
-						<span style="font-size: var(--font-size-fluid-2)">Fylgja Dialog Modal</span>
+						<span style="font-size: var(--font-size-fluid-2)"
+							>Fylgja Dialog Modal</span
+						>
 						<button @click="openModal = false">X</button>
 					</div>
 					<form action="#" method="dialog">
@@ -179,7 +89,11 @@ body > main {
 						</p>
 						<label class="field">
 							<span>Preview of a form field</span>
-							<input type="text" placeholder="Lorum Ipsum" required>
+							<input
+								type="text"
+								placeholder="Lorum Ipsum"
+								required
+							/>
 						</label>
 						<div class="field flex-wrap gap">
 							<button type="reset">Reset</button>
@@ -205,21 +119,21 @@ body > main {
 					class="offcanvas"
 				>
 					<div class="flex gap align">
-						<span style="font-size: var(--font-size-fluid-2)">Fylgja Dialog Modal</span>
+						<span style="font-size: var(--font-size-fluid-2)"
+							>Fylgja Dialog Modal</span
+						>
 						<button @click="openOffcanvas = false">X</button>
 					</div>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing
-						elit.
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 					</p>
 					<p>
-						Magnam, debitis dolor unde ab veritatis repellat
-						hic!<br />
+						Magnam, debitis dolor unde ab veritatis repellat hic!<br />
 						Cum hic corporis earum nemo facilis obcaecati soluta
 						sapiente quia iure.<br />
 						Sequi, molestiae eos!
 					</p>
-					<hr>
+					<hr />
 					<p>
 						Also
 						<a
@@ -233,17 +147,30 @@ body > main {
 					</p>
 				</dialog>
 			</div>
-			<div class="container" style="--py: var(--size-12); --container-size: 68ch">
-				<div class="relative rounded flow-none" style="border-width: 2px">
+			<div
+				class="container"
+				style="--py: var(--size-12); --container-size: 68ch"
+			>
+				<div
+					class="relative rounded flow-none"
+					style="border-width: 2px"
+				>
 					<div
 						class="absolute rounded-inherit"
-						style="--inset: 0;border-width: inherit;--size: 100%;translate: -1em -1em;--z: -1;"
+						style="
+							--z: -1;
+							--inset: 0;
+							--size: 100%;
+							border-width: inherit;
+							background: var(--surface-color);
+							translate: -1em -1em;
+						"
 					></div>
 					<pre
 						class="relative"
 						style="
 							--code-stroke: transparent;
-							--code-bg: #fff;
+							--code-bg: var(--surface-color);
 						"
 					>
 <code>&lt;script src="//unpkg.com/@fylgja/alpinejs-dialog" defer&gt;&lt;/script&gt;</code>
