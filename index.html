@@ -37,7 +37,7 @@
 		></script>
 	</head>
 	<body>
-		<main class="min-h-screen flex-col align-center">
+		<main class="container flex-col align-center">
 			<a
 				href="https://fylgja.dev/"
 				target="_blank"
@@ -52,9 +52,52 @@
 					height="130"
 				/>
 			</a>
+
+			<div
+				class="container"
+				style="
+					--py: var(--size-12);
+					--container-size: 68ch;
+					--container-gap: 0px;
+				"
+			>
+				<div
+					class="relative rounded flow-none"
+					style="border-width: 2px"
+				>
+					<div
+						class="absolute rounded-inherit"
+						style="
+							--z: -1;
+							--inset: 0;
+							--size: 100%;
+							border-width: inherit;
+							background: var(--surface-color);
+							translate: -1em -1em;
+						"
+					></div>
+					<pre
+						class="relative"
+						style="
+							--code-stroke: transparent;
+							--code-bg: var(--surface-color);
+						"
+					>
+	<code>&lt;script src="//unpkg.com/@fylgja/alpinejs-dialog" defer&gt;&lt;/script&gt;</code>
+	<code>&lt;script src="//unpkg.com/alpinejs" defer&gt;&lt;/script&gt;</code>
+	<code>&nbsp;</code>
+	<code>&lt;div x-data="{ open: false }"&gt;</code>
+	<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;button @click="open = true"&gt;Expand&lt;/button&gt;</code>
+	<code>&nbsp;</code>
+	<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;dialog x-show="open" x-htmldialog="open = false"&gt;</code>
+	<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Content...</code>
+	<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/dialog&gt;</code>
+	<code>&lt;/div&gt;</code></pre>
+				</div>
+			</div>
+
 			<div
 				x-data="{ openModal: false, openOffcanvas: false }"
-				x-init="$watch('openModal', value => console.log('Modal open:', value))"
 				style="--my: var(--size-8) 0"
 			>
 				<div
@@ -147,44 +190,35 @@
 					</p>
 				</dialog>
 			</div>
-			<div
-				class="container"
-				style="--py: var(--size-12); --container-size: 68ch"
-			>
-				<div
-					class="relative rounded flow-none"
-					style="border-width: 2px"
-				>
-					<div
-						class="absolute rounded-inherit"
-						style="
-							--z: -1;
-							--inset: 0;
-							--size: 100%;
-							border-width: inherit;
-							background: var(--surface-color);
-							translate: -1em -1em;
-						"
-					></div>
-					<pre
-						class="relative"
-						style="
-							--code-stroke: transparent;
-							--code-bg: var(--surface-color);
-						"
+
+			<blockquote>
+				<p>
+					When adding the <code>x-htmldialog</code> to an
+					<code>x-show</code> element, it will not toggle the display,
+					but instead use the native
+					<code>el.showModal()</code> function.
+					<br />
+					The value inside the <code>x-htmldialog</code> is not
+					required, but is recommended to close the dialog using the
+					escape key or clicking the backdrop.
+				</p>
+				<p>
+					<a
+						href="https://fylgja.dev/library/extensions/alpinejs-dailog/"
 					>
-<code>&lt;script src="//unpkg.com/@fylgja/alpinejs-dialog" defer&gt;&lt;/script&gt;</code>
-<code>&lt;script src="//unpkg.com/alpinejs" defer&gt;&lt;/script&gt;</code>
-<code>&nbsp;</code>
-<code>&lt;div x-data="{ open: false }"&gt;</code>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;button @click="open = true"&gt;Expand&lt;/button&gt;</code>
-<code>&nbsp;</code>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;dialog x-show="open" x-htmldialog="open = false"&gt;</code>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Content...</code>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/dialog&gt;</code>
-<code>&lt;/div&gt;</code></pre>
-				</div>
-			</div>
+						For more information see the full documentation on
+						fylgja.dev
+					</a>
+				</p>
+			</blockquote>
+			<p>
+				<em>
+					More Dialog examples are found on the
+					<a href="https://fylgja.dev/ui/">
+						UI Components on Fylgja.dev
+					</a>
+				</em>
+			</p>
 		</main>
 	</body>
 </html>
