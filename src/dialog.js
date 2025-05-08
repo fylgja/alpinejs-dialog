@@ -91,13 +91,13 @@ function modifierValue(modifiers, key, fallback) {
     if (key === "closeby") {
         const allowedValues = ["auto", "none", "closerequest", "any"];
         const options = allowedValues.join(", ");
+
         if (!allowedValues.includes(rawValue)) {
             console.warn(
                 `"${rawValue}" is not one of the allowed values for closeby: ${options}`
             );
+            return fallback;
         }
-
-        return fallback;
     }
 
     return rawValue;
