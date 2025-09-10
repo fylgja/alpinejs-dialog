@@ -9,6 +9,7 @@ export default function (Alpine) {
         const evaluate = expression.length
             ? evaluateLater(expression)
             : () => {};
+        const canEvaluate = expression.length > 0;
         const lockPageScroll = modifiers.includes("noscroll");
         const closeBy = el.hasAttribute("closeby")
             ? el.getAttribute("closeby")
@@ -18,51 +19,61 @@ export default function (Alpine) {
         el.style.display = null;
         el.style.length === 0 && el.removeAttribute("style");
 
-        el.addEventListener("keydown", escapeDialog);
-        el.addEventListener("click", backdropDialog);
-        el.addEventListener("submit", methodDialog);
         // Open dialog if the initial value is true
         if (el._x_isShown) {
             open();
         }
 
+        const closeBySupported = () => {
+            return "closedBy" in HTMLDialogElement.prototype;
+        };
+
         function scrollLock(use = true) {
             document.body.style.overflow = use ? "hidden" : "";
         }
 
-        // Also update the AlpineJs logic when the native close is triggered
-        // by the method=dialog or formmethod=dialog
-        function methodDialog(event) {
+        /**
+         * Prevent submit method=dialog or formmethod=dialog for AlpineJs logic
+         */
+        function dialogSubmit(event) {
             if (
-                event.target.getAttribute("method") === "dialog" ||
-                (event.submitter &&
-                    event.submitter.getAttribute("formmethod") === "dialog")
+                (event.target.getAttribute("method") === "dialog" ||
+                    event.submitter?.getAttribute("formmethod") === "dialog") &&
+                !canEvaluate
             ) {
-                evaluate();
+                event.preventDefault();
             }
         }
 
-        // Prevent native escape for AlpineJs logic
+        /**
+         * Prevent native escape for AlpineJs logic
+         */
         function escapeDialog(event) {
-            if (event.key !== "Escape") return;
-            event.preventDefault();
-
-            if (closeby !== "any" && closeby !== "closerequest") return;
-            evaluate();
+            if (event.key === "Escape" && !canEvaluate) {
+                event.preventDefault();
+            }
         }
 
-        // Mimics the new closeby=any attribute
-        function backdropDialog(event) {
-            if (event.target !== el || closeby !== "any") return;
-
+        function handleCloseByEvent(event) {
+            if (event.target !== el) return;
             const rect = el.getBoundingClientRect();
             const isInDialog =
                 rect.top <= event.clientY &&
                 event.clientY <= rect.top + rect.height &&
                 rect.left <= event.clientX &&
                 event.clientX <= rect.left + rect.width;
-            if (isInDialog) return;
 
+            if (!isInDialog) {
+                if (closeBy === "any") {
+                    if (closeBySupported) {
+                        event.preventDefault();
+                    }
+                    evaluate();
+                }
+            }
+        }
+
+        function handleCloseEvent() {
             evaluate();
         }
 
@@ -80,11 +91,16 @@ export default function (Alpine) {
 
         el._x_doShow = () => open();
         el._x_doHide = () => close();
+        el.addEventListener("keydown", escapeDialog);
+        el.addEventListener("submit", dialogSubmit);
+        el.addEventListener("click", handleCloseByEvent);
+        el.addEventListener("cancel", handleCloseEvent);
 
         cleanup(() => {
             el.removeEventListener("keydown", escapeDialog);
-            el.removeEventListener("click", backdropDialog);
-            el.removeEventListener("submit", methodDialog);
+            el.removeEventListener("submit", dialogSubmit);
+            el.removeEventListener("click", handleCloseByEvent);
+            el.removeEventListener("cancel", handleCloseEvent);
             scrollLock(false);
         });
     }
