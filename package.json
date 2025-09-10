@@ -1,6 +1,6 @@
 {
   "name": "@fylgja/alpinejs-dialog",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Bring the power of AlpineJs to the HTML dialog",
   "homepage": "https://fylgja.dev/",
   "author": "Fylgja",
@@ -30,6 +30,6 @@
     "build": "node ./scripts/build.js"
   },
   "devDependencies": {
-    "esbuild": "^0.25.0"
+    "esbuild": "^0.25.9"
   }
 }

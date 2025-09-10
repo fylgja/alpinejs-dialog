@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.2.0] - 2025-10-09
+### Added
+- Support for native `closeby` attribute,
+  This will replace the custom `closeby` Alpine modifier, in a later release
+- Support for handling the evaluate action when the native dialog close event is triggered.
+  This extending the first step we made for form submits, but now also for the backdrop and escape key
+
+### Fixed
+- Closing of all open dialogs when pressing the escape key
+
 ## [2.1.1] - 2025-05-08
 ### Fixed
 - Return value for `closeby`
