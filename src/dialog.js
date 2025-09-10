@@ -16,12 +16,15 @@ export default function (Alpine) {
 
         // Remove any logic set by `x-show`
         el.style.display = null;
-        el.hidden = false;
         el.style.length === 0 && el.removeAttribute("style");
 
         el.addEventListener("keydown", escapeDialog);
         el.addEventListener("click", backdropDialog);
         el.addEventListener("submit", methodDialog);
+        // Open dialog if the initial value is true
+        if (el._x_isShown) {
+            open();
+        }
 
         function scrollLock(use = true) {
             document.body.style.overflow = use ? "hidden" : "";
@@ -63,17 +66,20 @@ export default function (Alpine) {
             evaluate();
         }
 
-        el._x_doShow = () => {
+        function open() {
             if (el.hasAttribute("open")) return;
             el.showModal();
             scrollLock(lockPageScroll);
-        };
+        }
 
-        el._x_doHide = () => {
+        function close() {
             if (!el.hasAttribute("open")) return;
             el.close();
             scrollLock(false);
-        };
+        }
+
+        el._x_doShow = () => open();
+        el._x_doHide = () => close();
 
         cleanup(() => {
             el.removeEventListener("keydown", escapeDialog);
