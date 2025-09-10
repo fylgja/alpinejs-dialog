@@ -73,25 +73,25 @@ The `noscroll` modifier prevents scrolling on the background page while the dial
 </div>
 ```
 
-#### `closeby`
+### `closeby`
 
-The `closeby` modifier allows you to control which events trigger the close action
-defined in the `x-htmldialog` value (backdrop click and/or Escape key press).
+The `closeby` option gives you fine-grained control over how the dialog can be dismissed. The plugin polyfills this behavior for browsers that do not yet support it natively.
 
-This mimics the upcoming native `closeby` behavior of the `<dialog>` element.
+You can set this option in two ways:
 
-Available options for the `closeby` modifier:
-
-- `.auto` (Same as `.closerequest`). Only triggers the close action on the Escape key press.
-- `.none` Disables all automatic close triggers (backdrop click and Escape key).
-- `.closerequest` Only triggers the close action on the Escape key press.
-- `.any` (Default behavior if no `closeby` modifier is present).
-  Triggers the close action on both backdrop clicks and Escape key presses.
-
-Example, for disable all automatic closing:
-
+**1. As an attribute on the `<dialog>` element:**
 ```html
-<dialog x-show="open" x-htmldialog.closeby.none="open = false">...</dialog>
+<dialog closeby="any" ...>
 ```
 
-This way you can keep the close trigger for form submissions and prevent any other close triggers.
+**2. As a modifier on the `x-htmldialog` directive:**
+```html
+<dialog x-htmldialog.closeby.any ...>
+```
+
+#### Available Options
+
+* **`any`**: The dialog can be closed by any user action, such as pressing the `ESC` key or clicking on the backdrop.
+* **`closerequest`**: (Default) The dialog can be dismissed via the `ESC` key or a "close request" (e.g., a form submission with `method="dialog"`). It will not close when the backdrop is clicked.
+* **`none`**: The user cannot close the dialog. It must be closed programmatically.
+
