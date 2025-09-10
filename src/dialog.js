@@ -10,7 +10,9 @@ export default function (Alpine) {
             ? evaluateLater(expression)
             : () => {};
         const lockPageScroll = modifiers.includes("noscroll");
-        const closeby = modifierValue(modifiers, "closeby", "any");
+        const closeBy = el.hasAttribute("closeby")
+            ? el.getAttribute("closeby")
+            : modifierValue(modifiers, "closeby", "closerequest");
 
         // Remove any logic set by `x-show`
         el.style.display = null;
