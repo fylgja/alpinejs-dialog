@@ -24,9 +24,9 @@ export default function (Alpine) {
             open();
         }
 
-        const closeBySupported = () => {
+        const closeBySupported = (() => {
             return "closedBy" in HTMLDialogElement.prototype;
-        };
+        })();
 
         function scrollLock(use = true) {
             document.body.style.overflow = use ? "hidden" : "";
