@@ -37,11 +37,11 @@ export default function (Alpine) {
          */
         function dialogSubmit(event) {
             if (
-                (event.target.getAttribute("method") === "dialog" ||
-                    event.submitter?.getAttribute("formmethod") === "dialog") &&
-                !canEvaluate
+                event.target.getAttribute("method") === "dialog" ||
+                event.submitter?.getAttribute("formmethod") === "dialog"
             ) {
                 event.preventDefault();
+                evaluate();
             }
         }
 
