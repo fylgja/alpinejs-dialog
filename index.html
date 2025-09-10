@@ -118,7 +118,6 @@
 				<dialog
 					x-show="openModal"
 					x-htmldialog.noscroll="openModal = false"
-					closeby="none"
 				>
 					<div class="dialog-header flex gap align">
 						<span style="font-size: var(--font-size-fluid-2)"
@@ -142,6 +141,12 @@
 						<div class="field flex-wrap gap">
 							<button type="reset">Reset</button>
 							<button type="submit">Submit</button>
+							<button
+								type="button"
+								@click="openOffcanvas = !openOffcanvas"
+							>
+								Open offcanvas
+							</button>
 						</div>
 					</form>
 					<p>
