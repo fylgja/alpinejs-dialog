@@ -11,9 +11,9 @@ export default function (Alpine) {
             : () => {};
         const canEvaluate = expression.length > 0;
         const lockPageScroll = modifiers.includes("noscroll");
-        const closeBy = el.hasAttribute("closeby")
-            ? el.getAttribute("closeby")
-            : modifierValue(modifiers, "closeby", "closerequest");
+        const closeBy =
+            el.getAttribute("closeby") ||
+            modifierValue(modifiers, "closeby", "closerequest");
 
         // Remove any logic set by `x-show`
         el.style.display = null;
