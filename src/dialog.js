@@ -49,7 +49,9 @@ export default function (Alpine) {
          * Prevent native escape for AlpineJs logic
          */
         function escapeDialog(event) {
-            if (event.key === "Escape" && !canEvaluate) {
+            if (event.key !== "Escape") return;
+
+            if (closeBy === "none" || !canEvaluate) {
                 event.preventDefault();
             }
         }
