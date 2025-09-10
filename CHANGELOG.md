@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 [Unreleased]: https://github.com/fylgja/alpinejs-dialog/compare/v2.2.1...HEAD
 
+## [2.2.1] - 2025-10-09
+[2.2.1]: https://github.com/fylgja/alpinejs-dialog/compare/v2.2.0...v2.2.1
+
+### Fixed
+
+- Missing closeby logic for escape key
+- Missing submit logic from not triggering the close event
+
 ## [2.2.0] - 2025-10-09
 [2.2.0]: https://github.com/fylgja/alpinejs-dialog/compare/v2.1.1...v2.2.0
 

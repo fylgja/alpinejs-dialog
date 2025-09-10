@@ -31,7 +31,7 @@ function dialog_default(Alpine) {
     };
     const canEvaluate = expression.length > 0;
     const lockPageScroll = modifiers.includes("noscroll");
-    const closeBy = el.hasAttribute("closeby") ? el.getAttribute("closeby") : modifierValue(modifiers, "closeby", "closerequest");
+    const closeBy = el.getAttribute("closeby") || modifierValue(modifiers, "closeby", "closerequest");
     el.style.display = null;
     el.style.length === 0 && el.removeAttribute("style");
     if (el._x_isShown) {
@@ -45,12 +45,14 @@ function dialog_default(Alpine) {
     }
     function dialogSubmit(event) {
       var _a;
-      if ((event.target.getAttribute("method") === "dialog" || ((_a = event.submitter) == null ? void 0 : _a.getAttribute("formmethod")) === "dialog") && !canEvaluate) {
+      if (event.target.getAttribute("method") === "dialog" || ((_a = event.submitter) == null ? void 0 : _a.getAttribute("formmethod")) === "dialog") {
         event.preventDefault();
+        evaluate();
       }
     }
     function escapeDialog(event) {
-      if (event.key === "Escape" && !canEvaluate) {
+      if (event.key !== "Escape") return;
+      if (closeBy === "none" || !canEvaluate) {
         event.preventDefault();
       }
     }
