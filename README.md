@@ -73,7 +73,7 @@ The `noscroll` modifier prevents scrolling on the background page while the dial
 </div>
 ```
 
-### `closeby`
+#### `closeby`
 
 The `closeby` option gives you fine-grained control over how the dialog can be dismissed. The plugin polyfills this behavior for browsers that do not yet support it natively.
 
