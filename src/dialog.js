@@ -51,6 +51,8 @@ export default function (Alpine) {
         function escapeDialog(event) {
             if (event.key !== "Escape") return;
             event.preventDefault();
+
+            if (closeBy === "none") return;
             evaluate();
         }
 

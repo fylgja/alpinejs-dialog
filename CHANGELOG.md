@@ -6,14 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-[Unreleased]: https://github.com/fylgja/alpinejs-dialog/compare/v2.2.2...HEAD
+[Unreleased]: https://github.com/fylgja/alpinejs-dialog/compare/v2.2.3...HEAD
+
+## [2.2.3] - 2025-10-16
+[2.2.3]: https://github.com/fylgja/alpinejs-dialog/compare/v2.2.2...v2.2.3
+
+### Fixed
+
+- Missing closeBy logic for escape key event
 
 ## [2.2.2] - 2025-10-16
 [2.2.2]: https://github.com/fylgja/alpinejs-dialog/compare/v2.2.1...v2.2.2
 
 ### Fixed
 
-- Escape key still triggering the native close event.
+- Escape key still triggering the native close event
 
 ## [2.2.1] - 2025-10-09
 [2.2.1]: https://github.com/fylgja/alpinejs-dialog/compare/v2.2.0...v2.2.1

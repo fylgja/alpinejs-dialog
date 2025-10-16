@@ -51,14 +51,13 @@ function dialog_default(Alpine) {
       }
     }
     function escapeDialog(event) {
-      if (event.key !== "Escape")
-        return;
+      if (event.key !== "Escape") return;
       event.preventDefault();
+      if (closeBy === "none") return;
       evaluate();
     }
     function handleCloseByEvent(event) {
-      if (event.target !== el)
-        return;
+      if (event.target !== el) return;
       const rect = el.getBoundingClientRect();
       const isInDialog = rect.top <= event.clientY && event.clientY <= rect.top + rect.height && rect.left <= event.clientX && event.clientX <= rect.left + rect.width;
       if (!isInDialog) {
@@ -74,14 +73,12 @@ function dialog_default(Alpine) {
       evaluate();
     }
     function open() {
-      if (el.hasAttribute("open"))
-        return;
+      if (el.hasAttribute("open")) return;
       el.showModal();
       scrollLock(lockPageScroll);
     }
     function close() {
-      if (!el.hasAttribute("open"))
-        return;
+      if (!el.hasAttribute("open")) return;
       el.close();
       scrollLock(false);
     }
@@ -101,11 +98,9 @@ function dialog_default(Alpine) {
   }
 }
 function modifierValue(modifiers, key, fallback) {
-  if (modifiers.indexOf(key) === -1)
-    return fallback;
+  if (modifiers.indexOf(key) === -1) return fallback;
   const rawValue = modifiers[modifiers.indexOf(key) + 1];
-  if (!rawValue)
-    return fallback;
+  if (!rawValue) return fallback;
   if (key === "closeby") {
     const allowedValues = ["auto", "none", "closerequest", "any"];
     const options = allowedValues.join(", ");
@@ -121,5 +116,3 @@ function modifierValue(modifiers, key, fallback) {
 
 // src/module.js
 var module_default = dialog_default;
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {});
