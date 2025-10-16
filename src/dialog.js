@@ -50,10 +50,8 @@ export default function (Alpine) {
          */
         function escapeDialog(event) {
             if (event.key !== "Escape") return;
-
-            if (closeBy === "none" || !canEvaluate) {
-                event.preventDefault();
-            }
+            event.preventDefault();
+            evaluate();
         }
 
         function handleCloseByEvent(event) {
