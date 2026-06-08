@@ -4,7 +4,6 @@ function dialog_default(Alpine) {
   function fylgjaAlpineDialog(el, { expression, modifiers }, { evaluateLater, cleanup }) {
     const evaluate = expression.length ? evaluateLater(expression) : () => {
     };
-    const canEvaluate = expression.length > 0;
     const lockPageScroll = modifiers.includes("noscroll");
     const isModeless = modifiers.includes("modeless");
     const closeBy = el.getAttribute("closeby") || modifierValue(modifiers, "closeby", "closerequest");

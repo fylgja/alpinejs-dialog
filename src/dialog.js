@@ -4,12 +4,11 @@ export default function (Alpine) {
     function fylgjaAlpineDialog(
         el,
         { expression, modifiers },
-        { evaluateLater, cleanup }
+        { evaluateLater, cleanup },
     ) {
         const evaluate = expression.length
             ? evaluateLater(expression)
             : () => {};
-        const canEvaluate = expression.length > 0;
         const lockPageScroll = modifiers.includes("noscroll");
         const isModeless = modifiers.includes("modeless");
         const closeBy =
@@ -121,7 +120,7 @@ function modifierValue(modifiers, key, fallback) {
 
         if (!allowedValues.includes(rawValue)) {
             console.warn(
-                `"${rawValue}" is not one of the allowed values for closeby: ${options}`
+                `"${rawValue}" is not one of the allowed values for closeby: ${options}`,
             );
             return fallback;
         }
