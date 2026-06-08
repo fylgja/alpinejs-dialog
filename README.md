@@ -95,3 +95,11 @@ You can set this option in two ways:
 * **`closerequest`**: (Default) The dialog can be dismissed via the `ESC` key or a "close request" (e.g., a form submission with `method="dialog"`). It will not close when the backdrop is clicked.
 * **`none`**: The user cannot close the dialog. It must be closed programmatically.
 
+#### `modeless`
+
+The `modeless` modifier opens the dialog as a non-modal dialog using `el.show()` instead of `el.showModal()`. This means it does not block interaction with the rest of the page and does not render a backdrop.
+
+```html
+<dialog x-htmldialog.modeless ...>
+```
+
