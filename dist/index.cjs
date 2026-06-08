@@ -31,6 +31,7 @@ function dialog_default(Alpine) {
     };
     const canEvaluate = expression.length > 0;
     const lockPageScroll = modifiers.includes("noscroll");
+    const isModeless = modifiers.includes("modeless");
     const closeBy = el.getAttribute("closeby") || modifierValue(modifiers, "closeby", "closerequest");
     el.style.display = null;
     el.style.length === 0 && el.removeAttribute("style");
@@ -74,7 +75,7 @@ function dialog_default(Alpine) {
     }
     function open() {
       if (el.hasAttribute("open")) return;
-      el.showModal();
+      isModeless ? el.show() : el.showModal();
       scrollLock(lockPageScroll);
     }
     function close() {

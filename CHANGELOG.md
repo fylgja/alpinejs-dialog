@@ -6,7 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-[Unreleased]: https://github.com/fylgja/alpinejs-dialog/compare/v2.2.3...HEAD
+[Unreleased]: https://github.com/fylgja/alpinejs-dialog/compare/v2.3.0...HEAD
+
+## [2.3.0] - 2026-06-08
+[2.3.0]: https://github.com/fylgja/alpinejs-dialog/compare/v2.2.3...v2.3.0
+
+### Added
+
+- Support for `modeless` modifier, allowing the dialog to open as a non-modal dialog via `el.show()` instead of `el.showModal()`
 
 ## [2.2.3] - 2025-10-16
 [2.2.3]: https://github.com/fylgja/alpinejs-dialog/compare/v2.2.2...v2.2.3

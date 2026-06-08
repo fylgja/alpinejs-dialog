@@ -11,6 +11,7 @@ export default function (Alpine) {
             : () => {};
         const canEvaluate = expression.length > 0;
         const lockPageScroll = modifiers.includes("noscroll");
+        const isModeless = modifiers.includes("modeless");
         const closeBy =
             el.getAttribute("closeby") ||
             modifierValue(modifiers, "closeby", "closerequest");
@@ -81,7 +82,7 @@ export default function (Alpine) {
 
         function open() {
             if (el.hasAttribute("open")) return;
-            el.showModal();
+            isModeless ? el.show() : el.showModal();
             scrollLock(lockPageScroll);
         }
 
